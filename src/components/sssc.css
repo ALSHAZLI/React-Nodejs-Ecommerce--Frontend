@@ -1,0 +1,20 @@
+.ncnc{
+    justify-content: space-between;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+border-radius: 50%;
+
+background-color: rgba(231, 217, 255, 0.938);
+width: 40px;
+height: 40px;
+background-color: w;
+position: relative;
+position: absolute;
+top: 0;
+
+left: 0;
+transition: all 0.5s ease;
+
+}
