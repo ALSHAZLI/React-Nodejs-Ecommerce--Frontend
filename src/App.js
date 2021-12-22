@@ -5,6 +5,8 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Cart from "./pages/Cart";
 
+
+
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 
 const App = () => {
