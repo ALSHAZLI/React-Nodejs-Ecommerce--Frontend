@@ -1,5 +1,9 @@
 import styled from "styled-components";
+import { Rigester } from "../Redux/apiCalls";
+import { useState } from "react";
 import { mobile } from "../responsive";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
   width: 100vw;
@@ -46,7 +50,7 @@ const Agreement = styled.span`
 `;
 
 const Button = styled.button`
-  width: 40%;
+  width:140%;
   border: none;
   padding: 15px 20px;
   background-color: teal;
@@ -55,6 +59,18 @@ const Button = styled.button`
 `;
 
 const Register = () => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const { isFetching, error } = useSelector((state) => state.user);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    Rigester(dispatch, { username, password ,email});
+    
+  };
+
   return (
     <Container>
       <Wrapper>
@@ -62,15 +78,17 @@ const Register = () => {
         <Form>
           <Input placeholder="name" />
           <Input placeholder="last name" />
-          <Input placeholder="username" />
-          <Input placeholder="email" />
-          <Input placeholder="password" />
+          <Input placeholder="username" onChange={(e) => setUsername(e.target.value)}/>
+          <Input placeholder="email" onChange={(e) => setEmail(e.target.value)}/>
+          <Input placeholder="password" onChange={(e) => setPassword(e.target.value)}/>
           <Input placeholder="confirm password" />
           <Agreement>
             By creating an account, I consent to the processing of my personal
             data in accordance with the <b>PRIVACY POLICY</b>
           </Agreement>
-          <Button>CREATE</Button>
+          <Link >
+          <Button onClick={handleClick} disabled={isFetching} to="/">CREATE</Button>
+          </Link>
         </Form>
       </Wrapper>
     </Container>
